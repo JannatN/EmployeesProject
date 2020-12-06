@@ -12,7 +12,7 @@
 
     <style>
         .content {
-           background-color: pink;
+            background-color: pink;
             width: 100%;
             height: 100%;
             display: none;
@@ -67,12 +67,13 @@
                             var data = JSON.parse(this.responseText);
                             console.log(data);
 
-                            var tableContentHtml = '<table><tr><th>FirstName</th> <th>LastName</th></tr>';
+                            var tableContentHtml = '<table><tr><th>Department Name</th><th>First Name</th> <th>Last Name</th> </tr>';
 
                             for (var a = 0; a < data.length; a++) {
+                                var dept_name = data[a].dept_name;
                                 var first_name = data[a].first_name;
                                 var last_name = data[a].last_name;
-                                tableContentHtml += '<tr><td>' + first_name + '</td>' + '<td>' + last_name + '</td></tr>';
+                                tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td></tr>';
                             }
                             tableContentHtml += '</table>';
                             $(tableContentHtml).appendTo(".content");
