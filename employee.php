@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employees</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="employee.css">
 
@@ -14,7 +16,7 @@
 
     <style>
         .content {
-            background-color: pink;
+            background-color: #854b3d;
             width: 100%;
             height: 100%;
             display: none;
@@ -46,39 +48,32 @@
     <header>Welcome to Employees Section </header><br>
     <div id="external">
         <div class="left">
-            <button class="btn" id="btn1" type="submit"> Employees General Info </button>
+            <h2>View for Employees information</h2>
+            <button class="butn" id="btn1" type="submit"> Employees General Info </button>
             <div class="content"></div>
         </div>
+        <span class="border"></span>
         <div class="middle">
-            <button class="btn">New Employee +</button>
+            <h2>Insert New Employees </h2>
+            <button class="butn">New Employee +</button>
         </div>
+        <span class="border"></span>
         <div class="right">
-            <h2>Search By <img src="search.png" alt="serach">
-            </h2>
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Large button
-                </button>
-                <div class="dropdown-menu">
-                    ...
-                </div>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-lg" type="button">
-                    Large split button
-                </button>
-                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu">
-                    ...
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Search By </button> <img src="search.png" alt="search" width="70" height="70">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Name</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
 
-            <p> Name <button type="submit" name="qe2">Search</button></p>
+
+            <!-- <p> Name <button type="submit" name="qe2">Search</button></p>
             <p>Department-Name <button>Search</button></p>
             <p>Title <button>Search</button></p>
-            <p>Salary <button>Search</button></p>
+            <p>Salary <button>Search</button></p> -->
             <form class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
                 <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
