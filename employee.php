@@ -48,13 +48,13 @@
     <header>Welcome to Employees Section </header><br>
     <div id="external">
         <div class="left">
-            <h2>View for Employees information</h2>
+            <h2>View Employees information</h2>
             <button class="butn" id="btn1" type="submit"> Employees General Info </button>
             <div class="content"></div>
         </div>
         <span class="border"></span>
         <div class="middle">
-            <h2>Insert New Employees </h2>
+            <h2>Insert New Employee </h2>
             <button class="butn">New Employee +</button>
         </div>
         <span class="border"></span>

@@ -179,7 +179,7 @@ body {
 }
 
 .container {
-    width: 560px;
+    width: 500px;
     position: relative;
     margin: 0 auto;
 }
@@ -252,19 +252,19 @@ body {
 }
 
 .form-input::-webkit-input-placeholder {
-    color: #999;
+    color: rgb(80, 72, 72);
 }
 
 .form-input::-moz-placeholder {
-    color: #999;
+    color: rgb(80, 72, 72);
 }
 
 .form-input:-ms-input-placeholder {
-    color: #999;
+    color: rgb(80, 72, 72);
 }
 
 .form-input:-moz-placeholder {
-    color: #999;
+    color: rgb(80, 72, 72);
 }
 
 .form-input::-webkit-input-placeholder {
@@ -327,7 +327,7 @@ body {
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: black;
     text-transform: uppercase;
     border: none;
     background-image: -moz-linear-gradient(to left, #854b3d, #854b3d);
