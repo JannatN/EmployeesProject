@@ -64,6 +64,8 @@
             <div class="content1"></div>
             <button class="butn" id="btn2" type="submit">Department Salaries </button>
             <!-- <div class="content1"></div> -->
+            <div class="content2"></div>
+
 
         </div>
 
@@ -125,7 +127,7 @@
                     if ($(".content2").is(":visible")) {
 
                         var ajax = new XMLHttpRequest();
-                        ajax.open("GET", "dept_db.php", true);
+                        ajax.open("GET", "deptB_db.php", true);
                         ajax.send();
 
                         ajax.onreadystatechange = function() {
@@ -137,7 +139,7 @@
 
                                 for (var a = 0; a < data.length; a++) {
                                     var dept_name = data[a].dept_name;
-                                    var salary = data[a].salary;
+                                    var salary = data[a].sumSalary;
                                     tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + salary + '</td></tr>';
                                 }
                                 tableContentHtml += '</table>';
