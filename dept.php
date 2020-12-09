@@ -87,71 +87,130 @@
 
             </form>
         </div>
+    </div>
+    <div id="add_data_Modal" class="modal fade">
+        <div class="insertCard" style="color:white">
+            <div class="modal-header">
+                <button style="color:yellow; font-size:40px" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
+            <div class="modal-body">
+                <form method="post" id="insert_form">
+                    <label>Enter Department Number</label>
+                    <br>
+                    <input style="color: black;" type="text" id="dept_no" name="dept_no">
+                    <br />
+                    <label>Enter Department Name</label>
+                    <br>
+                    <input style="color: black;" type="text" id="dept_name" name="dept_name">
+                    <br />
 
+                    <input style="color: black" class="btns" type="submit" name="insert" id="insert" value="Insert" />
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btns" class="btn btn-default" data-dismiss="modal" style="color: black; ">Close</button>
+                </div>
+            </div>
 
-        <script>
-            $(document).ready(function() {
-                $("#btn1").on('click', function() {
-                    $('.content1').toggleClass('active');
-                    if ($(".content1").is(":visible")) {
+        </div>
+    </div>
 
-                        var ajax = new XMLHttpRequest();
-                        ajax.open("GET", "dept_db.php", true);
-                        ajax.send();
+    <script>
+        $(document).ready(function() {
+            $('#insert_form').on('submit', function(event) {
+                event.preventDefault();
+                if ($('#dept_no').val() == '') {
+                    alert("Department Number is required");
+                } else if ($('#dept_name').val() == '') {
+                    alert("Department Name is required");
+                } else {
+                    $.ajax({
+                        url: "dept_db.php",
+                        method: "POST",
+                        data: $('#insert_form').serialize(),
+                        beforeSend: function() {
+                            $('#insert').val("Inserting");
+                        },
+                        success: function(data) {
+                            alert("Done");
+                            $('#insert_form')[0].reset();
+                            // $('#add_data_Modal').modal('none');
+                            // $('.modal fade').modal('hide');
 
-                        ajax.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                var data = JSON.parse(this.responseText);
-                                console.log(data);
-
-                                var tableContentHtml = '<table><tr><th>Department Name</th><th>First Name</th> <th>Last Name</th> </tr>';
-
-                                for (var a = 0; a < data.length; a++) {
-                                    var dept_name = data[a].dept_name;
-                                    var first_name = data[a].first_name;
-                                    var last_name = data[a].last_name;
-                                    tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td></tr>';
-                                }
-                                tableContentHtml += '</table>';
-                                $(tableContentHtml).appendTo(".content1");
-                            }
 
                         }
-                    };
+                    });
+                }
 
-                });
 
-                $("#btn2").on('click', function() {
-                    $('.content2').toggleClass('active');
-                    if ($(".content2").is(":visible")) {
-
-                        var ajax = new XMLHttpRequest();
-                        ajax.open("GET", "deptB_db.php", true);
-                        ajax.send();
-
-                        ajax.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                var data = JSON.parse(this.responseText);
-                                console.log(data);
-
-                                var tableContentHtml = '<table><tr><th>Department Name</th> <th>Salary</th> </tr>';
-
-                                for (var a = 0; a < data.length; a++) {
-                                    var dept_name = data[a].dept_name;
-                                    var salary = data[a].sumSalary;
-                                    tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + salary + '</td></tr>';
-                                }
-                                tableContentHtml += '</table>';
-                                $(tableContentHtml).appendTo(".content2");
-                            }
-
-                        }
-                    };
-
-                });
             });
-        </script>
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $("#btn1").on('click', function() {
+                $('.content1').toggleClass('active');
+                if ($(".content1").is(":visible")) {
+
+                    var ajax = new XMLHttpRequest();
+                    ajax.open("GET", "dept_db.php", true);
+                    ajax.send();
+
+                    ajax.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var data = JSON.parse(this.responseText);
+                            console.log(data);
+
+                            var tableContentHtml = '<table><tr><th>Department Name</th><th>First Name</th> <th>Last Name</th> </tr>';
+
+                            for (var a = 0; a < data.length; a++) {
+                                var dept_name = data[a].dept_name;
+                                var first_name = data[a].first_name;
+                                var last_name = data[a].last_name;
+                                tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td></tr>';
+                            }
+                            tableContentHtml += '</table>';
+                            $(tableContentHtml).appendTo(".content1");
+                        }
+
+                    }
+                };
+
+            });
+
+            $("#btn2").on('click', function() {
+                $('.content2').toggleClass('active');
+                if ($(".content2").is(":visible")) {
+
+                    var ajax = new XMLHttpRequest();
+                    ajax.open("GET", "deptB_db.php", true);
+                    ajax.send();
+
+                    ajax.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var data = JSON.parse(this.responseText);
+                            console.log(data);
+
+                            var tableContentHtml = '<table><tr><th>Department Name</th> <th>Salary</th> </tr>';
+
+                            for (var a = 0; a < data.length; a++) {
+                                var dept_name = data[a].dept_name;
+                                var salary = data[a].sumSalary;
+                                tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + salary + '</td></tr>';
+                            }
+                            tableContentHtml += '</table>';
+                            $(tableContentHtml).appendTo(".content2");
+                        }
+
+                    }
+                };
+
+            });
+        });
+    </script>
 </body>
 
 </html>

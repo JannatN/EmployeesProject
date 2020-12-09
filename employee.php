@@ -14,8 +14,6 @@
 
     <link rel="stylesheet" href="employee.css">
 
-
-
     <style>
         .content {
             background-color: #854b3d;
@@ -41,6 +39,28 @@
             padding: 10px;
             color: black;
             /* display: none; */
+        }
+
+        .insertCard {
+            color: white;
+            display: block;
+            width: 50%;
+            display: grid;
+            justify-self: center;
+            text-align: center;
+            justify-content: center;
+            margin-left: 25%;
+        }
+
+        .btns {
+            font-size: 1vw;
+            background-color: rgb(209, 132, 93);
+            padding: 10px;
+            border-radius: 10%;
+            border: 2px solid #854b3d;
+            text-decoration: none;
+            outline: none;
+            cursor: pointer;
         }
     </style>
 
@@ -71,11 +91,6 @@
                 </div>
             </div>
 
-
-            <!-- <p> Name <button type="submit" name="qe2">Search</button></p>
-            <p>Department-Name <button>Search</button></p>
-            <p>Title <button>Search</button></p>
-            <p>Salary <button>Search</button></p> -->
             <form class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
                 <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
@@ -117,37 +132,45 @@
             });
         </script>
         <div id="add_data_Modal" class="modal fade">
-            <div class="InsertCard" style="color:red">
+            <div class="insertCard" style="color:white">
                 <div class="modal-header">
                     <button style="color:yellow; font-size:40px" type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style="text-align:center;" class="modal-title "> </h4>
                 </div>
+
                 <div class="modal-body">
                     <form method="post" id="insert_form">
                         <label>Enter employee ID number</label>
-                        <input type="text" id="number" name="number">
+                        <br>
+                        <input style="color: black;" type="text" id="number" name="number">
                         <br />
                         <label>Enter employee birth date</label>
-                        <input type="text" id="birthDate" name="birthDate">
+                        <br>
+                        <input style="color: black;" type="text" id="birthDate" name="birthDate">
                         <br />
                         <label>Enter employee first name</label>
-                        <input type="text" id="fname" name="fname">
+                        <br>
+                        <input style="color: black;" type="text" id="fname" name="fname">
                         <br />
                         <label>Enter employee last name</label>
-                        <input type="text" id="lname" name="lname">
+                        <br>
+                        <input style="color: black;" type="text" id="lname" name="lname">
                         <br />
                         <label>Enter employee gender</label>
-                        <input type="text" id="gender" name="gender">
+                        <br>
+                        <input style="color: black;" type="text" id="gender" name="gender">
                         <br />
                         <label>Enter employee hire date</label>
-                        <input type="text" id="hireDate" name="hireDate">
+                        <br>
+                        <input style="color: black;" type="text" id="hireDate" name="hireDate">
                         <br />
-                        <input style="color: black" type="submit" name="insert" id="insert" value="Insert" />
+                        <br>
+                        <input style="color: black" class="btns" type="submit" name="insert" id="insert" value="Insert" />
                     </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btns" class="btn btn-default" data-dismiss="modal" style="color: black; ">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: black">Close</button>
-                </div>
+
             </div>
         </div>
 
@@ -179,8 +202,8 @@
                             success: function(data) {
                                 alert("done");
                                 $('#insert_form')[0].reset();
-                                $('#add_data_Modal').modal('none');
-                                $('.modal fade').modal('hide');
+                                // $('#add_data_Modal').modal('none');
+                                // $('.modal fade').modal('hide');
 
 
                             }
