@@ -26,10 +26,8 @@
 
 <?php
 $conn =  mysqli_connect("localhost", "root", "", "employees") or die("FAILEEED");
-// print " Connection Success !";
 
 mysqli_select_db($conn, "employees") or die("could not connect to db");
-// print "Employees db is selected ";   if(!empty($_POST))
 // if (!empty($_POST)) {
 $output = '';
 $number = mysqli_real_escape_string($conn, $_POST["number"]);
@@ -39,7 +37,7 @@ $lname = mysqli_real_escape_string($conn, $_POST["lname"]);
 $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
 $hireDate = mysqli_real_escape_string($conn, $_POST["hireDate"]);
 
-$query = $query = "INSERT INTO employees(emp_no, birth_date, first_name, last_name, gender, hire_date)  
+$query = "INSERT INTO employees(emp_no, birth_date, first_name, last_name, gender, hire_date)  
 VALUES('$number', '$birthDate', '$fname', '$lname', '$gender', '$hireDate')";
 
 if (mysqli_query($conn, $query)) {

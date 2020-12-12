@@ -8,6 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="dept.css">
 
     <style>
@@ -72,7 +75,7 @@
         <span class="border"></span>
         <div class="middle">
             <h2>Insert a New Department </h2>
-            <button class="butn">New Department +</button>
+            <button type="button" name="id" id="id" data-toggle="modal" data-target="#add_data_Modal" class="butn">New Department +</button>
         </div>
         <span class="border"></span>
         <div class="right">
@@ -96,15 +99,15 @@
 
             <div class="modal-body">
                 <form method="post" id="insert_form">
-                    <label>Enter Department Number</label>
+                    <label>Enter department number</label>
                     <br>
-                    <input style="color: black;" type="text" id="dept_no" name="dept_no">
+                    <input style="color: black;" type="text" id="number" name="number">
                     <br />
-                    <label>Enter Department Name</label>
+                    <label>Enter department name</label>
                     <br>
-                    <input style="color: black;" type="text" id="dept_name" name="dept_name">
+                    <input style="color: black;" type="text" id="depName" name="depName">
                     <br />
-
+                    <br>
                     <input style="color: black" class="btns" type="submit" name="insert" id="insert" value="Insert" />
                 </form>
                 <div class="modal-footer">
@@ -114,25 +117,25 @@
 
         </div>
     </div>
-
     <script>
         $(document).ready(function() {
             $('#insert_form').on('submit', function(event) {
                 event.preventDefault();
-                if ($('#dept_no').val() == '') {
-                    alert("Department Number is required");
-                } else if ($('#dept_name').val() == '') {
-                    alert("Department Name is required");
+                if ($('#number').val() == '') {
+                    alert("Department number is required");
+                } else if ($('#depName').val() == '') {
+                    alert("Department name is required");
                 } else {
                     $.ajax({
-                        url: "dept_db.php",
+                        url: "dept_insert.php",
                         method: "POST",
                         data: $('#insert_form').serialize(),
                         beforeSend: function() {
                             $('#insert').val("Inserting");
                         },
                         success: function(data) {
-                            alert("Done");
+
+                            alert("done");
                             $('#insert_form')[0].reset();
                             // $('#add_data_Modal').modal('none');
                             // $('.modal fade').modal('hide');
@@ -156,7 +159,8 @@
                 if ($(".content1").is(":visible")) {
 
                     var ajax = new XMLHttpRequest();
-                    ajax.open("GET", "dept_db.php", true);
+                    ajax.open("GET", "deptA_db.php", true);
+
                     ajax.send();
 
                     ajax.onreadystatechange = function() {
