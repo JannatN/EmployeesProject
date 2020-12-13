@@ -13,12 +13,13 @@ FROM employees, departments, dept_emp
 Where dept_emp.emp_no =employees.emp_no 
 AND departments.dept_no =dept_emp.dept_no
 AND departments.dept_name LIKE '$search'";
-} else {
-   $query = "SELECT first_name, last_name, departments.dept_name 
-   FROM employees, departments, dept_emp
-   Where dept_emp.emp_no =employees.emp_no 
-   AND departments.dept_no =dept_emp.dept_no";
-}
+
+// } else {
+//    $query = "SELECT first_name, last_name, departments.dept_name 
+//    FROM employees, departments, dept_emp
+//    Where dept_emp.emp_no =employees.emp_no 
+//    AND departments.dept_no =dept_emp.dept_no";
+// }
 $result = mysqli_query($connect, $query);
 if (mysqli_num_rows($result) > 0) {
    $output .= '
@@ -41,4 +42,6 @@ if (mysqli_num_rows($result) > 0) {
    echo $output;
 } else {
    echo 'Data Not Found';
+}
+
 }

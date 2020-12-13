@@ -85,8 +85,9 @@
 
             <form class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Department Name" aria-label="Search"> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" id="search_text" placeholder="Department Name" aria-label="Search"> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Search </button> </span>
+                <div id="result"></div>
 
             </form>
         </div>
@@ -212,6 +213,33 @@
                     }
                 };
 
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            load_data();
+
+            function load_data(query) {
+                $.ajax({
+                    url: "fetch.php",
+                    method: "POST",
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            $('#search_text').keyup(function() {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
+                }
             });
         });
     </script>

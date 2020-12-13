@@ -36,7 +36,8 @@
         th,
         td {
             border: 1px solid #e3e3e3;
-            padding: 10px;
+            padding: 7px;
+            font-size: 10px;
             color: black;
             /* display: none; */
         }
@@ -84,16 +85,19 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Search By </button> <img src="search.png" alt="search" width="70" height="70">
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Name</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
 
+            </div>
+            <select name="selector" id="selector">
+                <option value="name">Search BY</option>
+                <option value="name">Name</option>
+                <option value="dept">Department</option>
+                <option value="title">Title</option>
+                <option value="salary">Salary</option>
+            </select>
+            <div id="result"></div>
             <form class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sm ml-3 w-75" type="text" id="search_text" placeholder="Search" aria-label="Search">
             </form>
         </div>
 
@@ -105,7 +109,7 @@
                     if ($(".content").is(":visible")) {
 
                         var ajax = new XMLHttpRequest();
-                        ajax.open("GET", "db.php", true);
+                        ajax.open("GET", "emp_db.php", true);
                         ajax.send();
 
                         ajax.onreadystatechange = function() {
@@ -113,13 +117,19 @@
                                 var data = JSON.parse(this.responseText);
                                 console.log(data);
 
-                                var tableContentHtml = '<table><tr><th>Department Name</th><th>First Name</th> <th>Last Name</th> </tr>';
+                                var tableContentHtml = '<table><tr><th>Employee Number</th><th>First Name</th><th>Last Name</th><th>Salary</th><th>Title</th> <th>Department Name</th></tr>';
 
                                 for (var a = 0; a < data.length; a++) {
-                                    var dept_name = data[a].dept_name;
+                                    var emp_no = data[a].emp_no;
                                     var first_name = data[a].first_name;
                                     var last_name = data[a].last_name;
-                                    tableContentHtml += '<tr><td>' + dept_name + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td></tr>';
+                                    var salary = data[a].salary;
+                                    var title = data[a].title;
+                                    var dept_name = data[a].dept_name;
+                                    console.log(dept_name);
+
+
+                                    tableContentHtml += '<tr><td>' + emp_no + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td>' + '<td>' + salary + '</td>' + '<td>' + title + '</td>' + '<td>' + dept_name + '</td></tr>';
                                 }
                                 tableContentHtml += '</table>';
                                 $(tableContentHtml).appendTo(".content");
@@ -193,7 +203,7 @@
 
                     } else {
                         $.ajax({
-                            url: "emp_db.php",
+                            url: "emp_insert.php",
                             method: "POST",
                             data: $('#insert_form').serialize(),
                             beforeSend: function() {
@@ -213,6 +223,36 @@
 
                 });
 
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                load_data();
+
+                function load_data(query) {
+                    var myData ={
+                    $selector: $("#selector").val(),
+                    };
+                    $.ajax({
+                        url: "fetch_emp.php",
+                        method: "POST",
+                        data: {
+                            myData:myData,
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#result').html(data);
+                        }
+                    });
+                }
+                $('#search_text').keyup(function() {
+                    var search = $(this).val();
+                    if (search != '') {
+                        load_data(search);
+                    } else {
+                        load_data();
+                    }
+                });
             });
         </script>
 </body>
