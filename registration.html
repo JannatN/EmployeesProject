@@ -6,51 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="registarion.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
     <style>
         body {
             background-color: #c3b5ac;
+        }
+
+        input[type='text'] {
+            border: 1px solid rgb(180, 169, 169);
+            ;
+        }
+
+        input[type='email'] {
+            border: 1px solid rgb(180, 169, 169);
+            ;
+        }
+
+        input[type='password'] {
+            border: 1px solid rgb(180, 169, 169);
         }
     </style>
 </head>
 
 <body>
 
-    <div class="main">
+    <!-- <div class="main"> -->
 
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <form method="POST" id="signup-form" class="signup-form">
-                        <h2 class="form-title">Create account</h2>
-                        <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name" />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password"
-                                placeholder="Password" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password"
-                                placeholder="Repeat your password" />
-                        </div>
-                        <div class="form-group">
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Create account</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="username" id="username" placeholder="Your Name"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" name="pass" id="pass" placeholder="Password"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" name="re_pass" id="re_pass"
+                            placeholder="Repeat your password" required />
+                    </div>
+                    <!-- <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
                                 statements in <a href="#" class="term-service">Terms of service</a></label>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
-                        </div>
-                    </form>
-                    <p class="loginhere">
-                        Have already an account ? <a href="LandPage.html" class="loginhere-link">Login here</a>
-                    </p>
-                </div>
+                        </div> -->
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+                    </div>
+                </form>
+                <p class="loginhere">
+                    Have already an account ? <a href="login.html" class="loginhere-link">Login here</a>
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            $('#signup-form').on('submit', function (event) {
+                event.preventDefault();
+                if ($('#username').val() == '') {
+                    alert("Username is required");
+                } else if ($('#email').val() == '') {
+                    alert("Email is required");
+                } else if ($('#pass').val() == '') {
+                    alert("Password is required");
+                }
+
+                else {
+                    $.ajax({
+                        url: "register.php",
+                        method: "POST",
+                        data: $('#signup-form').serialize(),
+                        beforeSend: function () {
+                            $('#submit').val("Signing Up");
+                        },
+                        success: function (data) {
+                            console.log(data+ "DFDfd");
+                            alert("Welcome");
+                            $('#signup-form')[0].reset();
+                            // $('#add_data_Modal').modal('none');
+                            // $('.modal fade').modal('hide');
+
+
+                        }
+                    });
+                }
+
+
+            });
+
+        });
+    </script>
+
+
 </body>
 
 </html>

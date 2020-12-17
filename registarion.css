@@ -1,6 +1,6 @@
 /* @extend display-flex; */
 
- display-flex, .display-flex, .display-flex-center {
+display-flex, .display-flex, .display-flex-center {
     display: flex;
     display: -webkit-flex;
 }
