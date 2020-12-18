@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employees App</title>
     <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -30,20 +29,27 @@
                     <form action="loogin.php" method="POST">
                         <div class="md-form">
                             <h1 style="text-align: center;">Login</h1>
-                            <input type="text" placeholder="Enter Username" id="username" name="username"
-                                id="materialLoginFormEmail" class="form-control" required>
+                            <input type="text" placeholder="Enter Username" id="username" name="username" id="materialLoginFormEmail" class="form-control" required>
                         </div>
                         <br>
                         <div class="md-form">
 
-                            <input type="password" placeholder="Enter Password" id="pass" name="pass"
-                                id="materialLoginFormEmail" class="form-control" required>
+                            <input type="password" placeholder="Enter Password" id="pass" name="pass" id="materialLoginFormEmail" class="form-control" required>
                         </div>
                         <div class="md-form">
 
                             <button class="btn btn-rounded btn-block my-4 waves-effect z-depth-0 " style="border: 1px solid #854b3d;   font-size: 1.3vw;
                             font-weight: 700;" id="login" name="login">Login</button>
                         </div>
+                        <?php
+                        if (@$_GET['Invalid'] == true) {
+                        ?>
+                            <div class="alert-light text-danger text-center py-3">
+                                <?php echo $_GET['Invalid'] ?>
+                            </div>
+                        <?php
+                        }
+                        ?>
                         <p>Not a member?
                             <a href="registration.html">Register</a>
                         </p>

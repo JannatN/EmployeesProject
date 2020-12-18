@@ -12,8 +12,9 @@ if (isset($_POST["login"])) {
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) < 1) {
-        $result = 'Please check your username or password';
-        header('location: loogin.html');
+        $result = 'Incorrect! Please check your username or password';
+        header('location: looginHTML.php?Invalid=Incorrect! Please check your username or password');
+
     } else {
         $result = 'Welcome ' . $username;
         $_SESSION['username'] = $username;
