@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+
+    header("location: loogin.html");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +43,9 @@
     </div>
     <br><br><br><br>
     <div id="external">
+        <form action="logout.php" method="POST">
+            <button id="logout">Logout</button>
+        </form>
         <div><img id="qoute" src="Capture.PNG" alt="qoute"></div>
         <div class="butns">
             <div id="mynav">

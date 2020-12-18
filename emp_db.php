@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <?php
 $conn =  mysqli_connect("localhost", "root", "", "employees") or die("FAILEEED");
 
