@@ -92,11 +92,13 @@ if (!isset($_SESSION["username"])) {
             <img src="search.png" alt="search" width="70" height="70">
 
 
-            <form class="form-inline active-pink-3 active-pink-4">
+            <form method="POST" class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" id="search_text" placeholder="Department Name" aria-label="Search"> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" name="search" id="search" placeholder="Department Name" aria-label="Search">
+                    <button type="submit" id="submit" name="submit">
                         Search </button> </span>
-                <div id="result"></div>
+                <!-- <div id="result"></div> -->
+                <?php require 'fetch_dept.php' ?>
 
             </form>
         </div>
@@ -225,14 +227,14 @@ if (!isset($_SESSION["username"])) {
             });
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
 
             load_data();
 
             function load_data(query) {
                 $.ajax({
-                    url: "fetch.php",
+                    url: "fetch_dept.php",
                     method: "POST",
                     data: {
                         query: query
@@ -251,7 +253,7 @@ if (!isset($_SESSION["username"])) {
                 }
             });
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
