@@ -94,7 +94,7 @@ if (!isset($_SESSION["username"])) {
 
             <form method="POST" class="form-inline active-pink-3 active-pink-4">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" name="search" id="search" placeholder="Department Name" aria-label="Search">
+                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" name="search" id="search" placeholder="Department Name" aria-label="Search" required>
                     <button type="submit" id="submit" name="submit">
                         Search </button> </span>
                 <!-- <div id="result"></div> -->

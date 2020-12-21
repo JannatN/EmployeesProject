@@ -73,6 +73,14 @@ if (!isset($_SESSION["username"])) {
             outline: none;
             cursor: pointer;
         }
+
+        .search1 {
+            display: none;
+        }
+
+        .visiblity {
+            visibility: visible;
+        }
     </style>
 
 </head>
@@ -92,25 +100,20 @@ if (!isset($_SESSION["username"])) {
         </div>
         <span class="border"></span>
         <div class="right">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Search By </button> <img src="search.png" alt="search" width="70" height="70">
 
-            </div>
-            <select name="selector" id="selector">
-                <option value="name">Search BY</option>
-                <option value="name">Name</option>
-                <option value="dept">Department</option>
-                <option value="title">Title</option>
-                <option value="salary">Salary</option>
-            </select>
-            <div id="result"></div>
-            <form class="form-inline active-pink-3 active-pink-4">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input class="form-control form-control-sm ml-3 w-75" type="text" id="search_text" placeholder="Search" aria-label="Search">
+            <form  method="post">
+                <select name="selected" id="selected">
+                    <option value="searchBy">search by</option>
+                    <option value="name">Name</option>
+                    <option value="dept">Department</option>
+                    <option value="title">Title</option>
+
+                </select>
+                <input type="text" name="search" id="search" class="form-control form-control-sm ml-3 w-75" required>
+                <button name="submit" id="submit" type="submit">search</button>
+                <?php require 'fetch_emp.php' ?>
             </form>
         </div>
-
 
         <script>
             $(document).ready(function() {
@@ -235,36 +238,7 @@ if (!isset($_SESSION["username"])) {
 
             });
         </script>
-        <script>
-            $(document).ready(function() {
-                load_data();
 
-                function load_data(query) {
-                    var myData ={
-                    $selector: $("#selector").val(),
-                    };
-                    $.ajax({
-                        url: "fetch_emp.php",
-                        method: "POST",
-                        data: {
-                            myData:myData,
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#result').html(data);
-                        }
-                    });
-                }
-                $('#search_text').keyup(function() {
-                    var search = $(this).val();
-                    if (search != '') {
-                        load_data(search);
-                    } else {
-                        load_data();
-                    }
-                });
-            });
-        </script>
 </body>
 
 </html>
