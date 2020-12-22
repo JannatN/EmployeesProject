@@ -1,12 +1,12 @@
 <?php
 session_start();
+$name = $_SESSION['username'];
 if (!isset($_SESSION["username"])) {
 
     header("location: looginHTML.php");
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,14 +21,16 @@ if (!isset($_SESSION["username"])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="emp.css">
 
     <style>
         .content {
             background-color: #854b3d;
             width: 100%;
-            height: 100%;
+            /* height: 100%; */
             display: none;
             z-index: -1;
         }
@@ -63,56 +65,89 @@ if (!isset($_SESSION["username"])) {
             margin-left: 25%;
         }
 
-        .btns {
+        .formbtn {
+            background-color: #af8177;
+            color: white;
             font-size: 1vw;
-            background-color: rgb(209, 132, 93);
-            padding: 10px;
-            border-radius: 10%;
-            border: 2px solid #854b3d;
+            padding: 4%;
+            width: 100%;
             text-decoration: none;
             outline: none;
             cursor: pointer;
+            border-radius: 30%;
+            border: none;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
-        .search1 {
-            display: none;
-        }
-
-        .visiblity {
-            visibility: visible;
+        #nav {
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto;
+            margin-left: 5%;
+            grid-gap: 5%;
+            height: 20vh;
         }
     </style>
 
 </head>
 
 <body>
-    <header>Welcome to Employees Section </header><br>
     <div id="external">
-        <div class="left">
-            <h2>View Employees information</h2>
-            <button class="butn" id="btn1" type="submit"> Employees General Info </button>
-            <div class="content"></div>
+        <div class="leftSide">
+            <div> <img id="happyman" src="happy man2.png" alt="employee" width="200">
+            </div>
         </div>
-        <span class="border"></span>
-        <div class="middle">
-            <h2>Insert New Employee </h2>
-            <button type="button" name="id" id="id" data-toggle="modal" data-target="#add_data_Modal" class="butn">New Employee +</button>
-        </div>
-        <span class="border"></span>
-        <div class="right">
+        <div class="rightSide">
+            <header>
+                <p id="dash">
+                    <?php
+                    echo 'Welcome ' . $name . ' in Employees Section';
+                    ?>
+                </p>
+                <span id="name">
+                    <form action="logout.php" method="POST">
+                        <button id="logout">Logout</button>
+                    </form>
+                    <form action="home.php" method="POST">
+                        <button id="logout">Home</button>
+                    </form>
+                </span>
+            </header>
+            <div id="sec-1">
+                <div id="nav">
+                    <p class="subtitles">Search BY:</p>
+                    <form action="name_search.php">
+                        <button class="formbtn" type="submit">Name</button>
+                    </form>
+                    <form action="dept_search.php">
+                        <button class="formbtn" type="submit">Department</button>
+                    </form>
+                    <form action="title_search.php">
+                        <button class="formbtn" type="submit">Title</button>
+                    </form>
+                    <form action="">
+                        <button class="formbtn" type="submit">Salary</button>
+                    </form>
 
-            <form  method="post">
-                <select name="selected" id="selected">
-                    <option value="searchBy">search by</option>
-                    <option value="name">Name</option>
-                    <option value="dept">Department</option>
-                    <option value="title">Title</option>
+                </div>
+                <div id="sec-2">
+                    <div class="overview">
+                        <p class="subtitles"> View Employees information </p>
+                        <button class="butn" id="btn1" type="submit"> Employees General Info </button>
+                        <div class="content"></div>
 
-                </select>
-                <input type="text" name="search" id="search" class="form-control form-control-sm ml-3 w-75" required>
-                <button name="submit" id="submit" type="submit">search</button>
-                <?php require 'fetch_emp.php' ?>
-            </form>
+                    </div>
+                    <div class="sources">
+                        <p class="subtitles">Insert New Employee</p>
+                        <button type="button" name="id" id="id" data-toggle="modal" data-target="#add_data_Modal" class="butn">New Employee +</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
 
         <script>
@@ -130,7 +165,7 @@ if (!isset($_SESSION["username"])) {
                                 var data = JSON.parse(this.responseText);
                                 console.log(data);
 
-                                var tableContentHtml = '<table><tr><th>Employee Number</th><th>First Name</th><th>Last Name</th><th>Salary</th><th>Title</th> <th>Department Name</th></tr>';
+                                var tableContentHtml = '<table class="table-responsive"><tr><th>Employee Number</th><th>First Name</th><th>Last Name</th><th>Salary</th><th>Title</th> <th>Department Name</th></tr>';
 
                                 for (var a = 0; a < data.length; a++) {
                                     var emp_no = data[a].emp_no;
@@ -158,6 +193,7 @@ if (!isset($_SESSION["username"])) {
             <div class="insertCard" style="color:white">
                 <div class="modal-header">
                     <button style="color:yellow; font-size:40px" type="button" class="close" data-dismiss="modal">&times;</button>
+
                 </div>
 
                 <div class="modal-body">
