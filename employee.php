@@ -126,7 +126,7 @@ if (!isset($_SESSION["username"])) {
                     <form action="title_search.php">
                         <button class="formbtn" type="submit">Title</button>
                     </form>
-                    <form action="">
+                    <form action="salary_search.php">
                         <button class="formbtn" type="submit">Salary</button>
                     </form>
 
@@ -134,6 +134,15 @@ if (!isset($_SESSION["username"])) {
                 <div id="sec-2">
                     <div class="overview">
                         <p class="subtitles"> View Employees information </p>
+                        <!-- <form method="post">
+                            <select name="selected" id="selected">
+                                <option value=0>Show</option>
+                                <option value=50>50</option>
+                                <option value=100>100</option>
+                                <option value=250>250</option>
+                                <option value=500>500</option>
+                            </select>
+                        </form> -->
                         <button class="butn" id="btn1" type="submit"> Employees General Info </button>
                         <div class="content"></div>
 
