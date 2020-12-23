@@ -1,11 +1,4 @@
-body {
-    background-image: url("Capture.PNG");
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 0px;
-    background-size: cover;
-}
+
 
 #background {
     width: 100%;
@@ -51,4 +44,9 @@ body {
     color: #fff;
     background-color: #854b3d;
     border-color: #854b3d;
+}
+
+#q {
+    font-style: italic;
+    color: #854b3d;
 }

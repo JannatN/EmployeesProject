@@ -10,6 +10,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin: 0px;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,7 +48,7 @@
                         <div class="md-form">
 
                             <button class="btn btn-rounded btn-block my-4 waves-effect z-depth-0 " style="border: 1px solid #854b3d;   font-size: 1.3vw;
-                            font-weight: 700;" id="login" name="login">Login</button>
+                            font-weight: 400;" id="login" name="login">Login</button>
                         </div>
                         <?php
                         if (@$_GET['Invalid'] == true) {
@@ -55,59 +64,11 @@
                         </p>
 
                         <br><br>
-                        <label>“When you wear a mask you'll be saving a life. That life could be your own, or someone
+                        <label style=" font-weight: 700; font-style: italic; color: #854b3d;">“When you wear a mask you'll be saving a life. That life could be your own, or someone
                             who means a lot to you.” <br>Wear your Mask Please!</label>
                     </form>
                     <div id="result"></div>
 
-
-                    <!-- <script>
-        $(document).ready(function () {
-            $("#login").click(function () {
-                var myData = {
-                    username: $("#username").val(),
-                    pass: $("#pass").val(),
-                };
-                $.ajax({
-                    url: 'login.php',
-                    type: "POST",
-                    data: myData,
-                    success: function (receivedData) {
-                        var obj = JSON.parse(receivedData);
-                        $("#result").html(obj.result);
-                        location.href = "home.php"
-                        // alert(obj.result);
-                    },
-                    error: function () {
-                        alert('failure');
-                    }
-                });
-            });
-        });
-
-    </script> -->
-                    <!-- <script>
-        $(document).ready(function () {
-            $("#login").click(function () {
-                var myData = {
-                    username: $("#username").val(),
-                    pass: $("#pass").val(),
-                };
-                $.ajax({
-                    url: 'login.php',
-                    type: "POST",
-                    data: myData,
-                    success: function (receivedData) {
-                        location.href = "home.php"
-                    },
-                    error: function () {
-                        alert('failure');
-                    }
-                });
-            });
-        });
-
-    </script> -->
 
 </body>
 

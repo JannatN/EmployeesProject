@@ -1,5 +1,6 @@
 <?php
 session_start();
+$name = $_SESSION['username'];
 if (!isset($_SESSION["username"])) {
 
     header("location: looginHTML.php");
@@ -20,7 +21,7 @@ if (!isset($_SESSION["username"])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="dept.css">
+    <link rel="stylesheet" href="department.css">
 
     <style>
         .content1 {
@@ -32,9 +33,12 @@ if (!isset($_SESSION["username"])) {
         }
 
         .content2 {
-            background-color: pink;
             width: 100%;
             height: 100%;
+            justify-self: center;
+            justify-content: center;
+            text-align: center;
+            margin-left: 15%;
             display: none;
             z-index: -1;
         }
@@ -50,25 +54,53 @@ if (!isset($_SESSION["username"])) {
 
         table,
         tr,
-        th,
         td {
             border: 1px solid #e3e3e3;
-            padding: 5px;
+            padding: 10px;
             color: black;
-            font-size: 1.3vw;
+            font-size: 1.2vw;
             /* display: none; */
         }
 
-        h2 {
-            color: black;
-            font-size: 2vw;
+        th {
+            background-color: #854b3d;
+            color: white;
+            font-weight: 600;
+            padding: 10px;
+
+
+        }
+
+
+
+        .insertCard {
+            color: white;
+            display: block;
+            width: 50%;
+            display: grid;
+            justify-self: center;
+            text-align: center;
+            justify-content: center;
+            margin-left: 25%;
         }
     </style>
 
 </head>
 
 <body>
-    <header>Welcome to Departments Section </header><br>
+    <header>
+        <div> <img id="happyman" src="happy man2.png" alt="employee" width="50"> </div>
+
+        <?php
+        echo 'Welcome ' . $name . ' in Departments Section';
+        ?>
+        <form action="home.php" method="POST">
+            <button class="butnNav" id="logout">Home</button>
+        </form>
+        <form action="logout.php" method="POST">
+            <button class="butnNav" id="logout">Logout</button>
+        </form>
+    </header><br>
     <div id="external">
         <div class="left">
             <h2>View Departments information </h2>
@@ -89,19 +121,29 @@ if (!isset($_SESSION["username"])) {
         <span class="border"></span>
         <div class="right">
             <h2> Search about Employees Who Work in Departments</h2>
-            <img src="search.png" alt="search" width="70" height="70">
-
-
-            <form method="POST" class="form-inline active-pink-3 active-pink-4">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <span> <input class="form-control form-control-sm ml-3 w-75" type="text" name="search" id="search" placeholder="Department Name" aria-label="Search" required>
-                    <button type="submit" id="submit" name="submit">
-                        Search </button> </span>
-                <!-- <div id="result"></div> -->
+            <!-- <img src="search.png" alt="search" width="70" height="70"> -->
+            <form method="post">
+                <select id="dropdownMenuButton" name="selected" id="selected">
+                    <option value=0>Show</option>
+                    <option value=50>50</option>
+                    <option value=100>100</option>
+                    <option value=250>250</option>
+                    <option value=500>500</option>
+                </select>
                 <?php require 'fetch_dept.php' ?>
+                <form method="POST" class="form-inline active-pink-3 active-pink-4">
+                    <span> <input class="form-control form-control-sm ml-3 w-75" type="text" name="search" id="search" placeholder="Department Name" aria-label="Search" required>
+                        <button class="btns" type="submit" id="submit" name="submit">
+                            Search </button> </span>
+                    <!-- <div id="result"></div> -->
 
+                </form>
             </form>
+
         </div>
+
+
+    </div>
     </div>
     <div id="add_data_Modal" class="modal fade">
         <div class="insertCard" style="color:white">

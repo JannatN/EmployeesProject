@@ -1,260 +1,255 @@
 body {
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
     margin: 0px;
-    height: auto;
-    width: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
 }
 
-.external {
-    /* display: grid;
-    grid-template-columns: 20% auto; */
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin: 0px;
-    width: 100%;
-}
-
-.leftSide {
-    background-color: #854b3d;
-    float: left;
-    width: 20%;
-    height: 100vh;
-}
-
-.rightSide {
-    background-color: #ffffff;
-    float: left;
-    width: 80%;
-    /* height: 100vh; */
-}
-
-#logout {
-    background-color: #854b3d;
+header {
     color: white;
-    font-size: 1.3vw;
-    padding: 5%;
-    width: 55%;
-    height: 30%;
-    border-radius: 5%;
+    background: #854b3d;
+    padding: 10px;
+    font-size: 3vw;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.formbtn {
+    background-color: #af8177;
+    color: white;
+    font-size: 1vw;
+    padding: 4%;
+    width: 100%;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 30%;
+    border: none;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-@media screen and (min-width: 320px) {
-    header {
-        display: grid;
-        grid-template-columns: 70% auto auto;
-    }
-    .nav {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        border: 1px solid c3b5ac;
-        font-size: 1.4vw;
-        font-weight: 700;
-        text-align: center;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    #sec-1 {
-        border: 1px solid #c3b5ac;
-        display: grid;
-        width: 100%;
-        grid-template-columns: auto auto auto;
-    }
-    #sec-2 {
-        display: grid;
-        margin-left: 10%;
-        grid-template-columns: 50% 50%;
-        width: 100%;
-
-        /* border: 1px solid #c3b5ac; */
-    }
-    #lifeEmp {
-        width: 100%;
-    }
-    .profile a {
-        color: white;
-        text-decoration: none;
-    }
-    .profile a:hover {
-        color: black;
-    }
-    #proimg{
-        border-radius: 50%;
-        width: 80%;
-    }
-    #company {
-        margin-left: 5%;
-        margin-top: 3%;
-        display: grid;
-        grid-template-columns: 40% 60%;
-        font-size: 2vw;
-        font-weight: 700;
-        color: white;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    #dash {
-        color: #854b3d;
-        font-size: 2.5vw;
-        font-weight: 700;
-        margin-left: 2%;
-    }
-    .subtitles {
-        /* margin-left: 5%; */
-        font-size: 2.4vw;
-        font-weight: 700;
-        color: #854b3d;
-        width: 100%;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    .innerHref {
-        background-color: #c3b5ac;
-        text-align: center;
-    }
-    .innerHref a {
-        text-decoration: none;
-        font-size: 2.4vw;
-        font-weight: 700;
-        color: #854b3d;
-    }
-    .innerHref a:hover {
-        color: #502115;
-    }
-    .overview {
-        border: 2px solid rgb(223, 215, 215);
-        padding: 10%;
-        width: 100%;
-
-    }
-    .sources {
-        border: 2px solid rgb(223, 215, 215);
-        padding: 10%;
-        width: 100%;
-
-    }
-    #happyman{
-        width: 80%;
-    }
+#nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    margin-left: 5%;
+    grid-gap: 5%;
+    height: 20vh;
 }
 
-@media screen and (max-width: 320px) {
-    .leftSide {
-        background-color: #F8F9FC;
-    }
-    .rightSide {
-        background-color: #F8F9FC;
+h2 {
+    color: #854b3d;
+    font-weight: 800;
+    font-size: 2vw;
+    margin-bottom: 7%;
+}
+
+#external {
+    display: flex;
+    grid-gap: 15px;
+    column-gap: normal;
+}
+
+.border {
+    height: 100vh;
+    background-color: rgb(14, 14, 14);
+    width: 1px;
+}
+
+.right {
+    width: 35%;
+    text-align: center;
+    color: black;
+}
+
+.middle {
+    width: 30%;
+    text-align: center;
+    /* background-color: #b2a59c; */
+}
+
+.left {
+    float: left;
+    width: 35%;
+}
+
+.butn {
+    font-size: 1.3vw;
+    background-color: rgb(209, 132, 93);
+    padding: 20px;
+    border-radius: 10%;
+    border: 3px solid #854b3d;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    width: 50%;
+    text-decoration: none;
+    outline: none;
+}
+
+.butnNav {
+    font-size: 1.3vw;
+    background-color: rgb(209, 132, 93);
+    padding: 20px;
+    border-radius: 60%;
+    border: 5px solid #854b3d;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    outline: none;
+}
+
+.btns {
+    font-size: 1vw;
+    background-color: rgb(209, 132, 93);
+    padding: 10px;
+    border-radius: 10%;
+    border: 3px solid #854b3d;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    outline: none;
+}
+
+#dropdownMenuButton {
+    padding: 10px;
+    font-size: 1.3vw;
+    font-weight: 700;
+    background-color: white;
+    border: 5px solid rgb(209, 132, 93);
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        margin: 0px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20px;
     }
     header {
-        display: grid;
-        grid-template-columns: 80% 20%;
-    }
-    .nav {
-        display: grid;
-        grid-template-columns: auto;
-        border: 1px solid #854b3d;
-        font-size: 3.4vw;
-        font-weight: 700;
-        text-align: center;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    .innernav {
-        border: 1px solid c3b5ac;
-        background-color: white;
-        width: 50%;
-        margin: 5%;
-        justify-self: center;
-        color: gray;
-    }
-    #month {
-        color: blue;
-        border: 1px solid #c3b5ac;
-    }
-    #annual {
-        color: rgb(62, 156, 62);
-        border: 1px solid #c3b5ac;
-    }
-    #task {
-        color: rgb(114, 114, 243);
-        border: 1px solid #c3b5ac;
-    }
-    #req {
-        color: rgb(231, 204, 48);
-        border: 1px solid #c3b5ac;
-    }
-    #sec-1 {
-        border: 1px solid #c3b5ac;
-        margin: 1%;
-        display: grid;
-        grid-template-columns: auto;
-    }
-    #sec-2 {
-        display: grid;
-        grid-template-rows: auto auto;
-        border: 1px solid #c3b5ac;
-    }
-    #company {
-        display: grid;
-        grid-template-columns: auto;
+        color: white;
+        background: #854b3d;
+        padding: 10px;
         font-size: 3vw;
         font-weight: 700;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .formbtn {
+        background-color: #af8177;
         color: white;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        text-align: center;
-        justify-content: center;
-        justify-self: center;
-    }
-    #company img {
-        width: 20px;
-        height: 20px;
-        justify-self: center;
-        margin-top: 5%;
-    }
-    #company p {
-        visibility: hidden;
-    }
-    #dash {
-        color: gray;
-        font-size: 5vw;
-        font-weight: 700;
-    }
-    .overview img {
+        font-size: 2vw;
+        padding: 4%;
         width: 100%;
-    }
-    #name {
-        visibility: hidden;
-    }
-    .subtitles {
-        /* margin-left: 5%; */
-        font-size: 2.4vw;
-        font-weight: 700;
-        color: #854b3d;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 30%;
+        border: none;
+        text-align: center;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    .innerHref {
-        background-color: #c3b5ac;
-        text-align: center;
+    #nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        margin-left: 5%;
+        grid-gap: 5%;
+        height: 20vh;
     }
-    .innerHref a {
-        text-decoration: none;
-        font-size: 2.4vw;
-        font-weight: 700;
+    h2 {
         color: #854b3d;
+        font-weight: 800;
+        font-size: 2vw;
+        margin-bottom: 7%;
     }
-    .innerHref a:hover {
-        color: #502115;
+    #external {
+        display: flex;
+        grid-gap: 15px;
+        column-gap: normal;
+        flex-wrap:nowrap ;
     }
-    .overview {
-        /* background-color: #ece8e5; */
-        border: 2px solid rgb(223, 215, 215);
-        justify-self: center;
-        padding: 5%;
+    .border {
+        height: 100vh;
+        background-color: rgb(14, 14, 14);
+        width: 1px;
     }
-    .sources {
-        /* background-color: #ece8e5; */
-        border: 2px solid rgb(223, 215, 215);
-        justify-self: center;
-        padding: 5%;
+    .right {
+        width: 30%;
+        text-align: center;
+        color: black;
     }
-    #happyman{
+    .middle {
+        width: 40%;
+        text-align: center;
+        /* background-color: #b2a59c; */
+    }
+    .left {
+        float: left;
+        width: 30%;
+    }
+    .butn {
+        font-size: 2vw;
+        background-color: rgb(209, 132, 93);
+        padding: 20px;
+        border-radius: 10%;
+        border: 3px solid #854b3d;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
         width: 50%;
+        text-decoration: none;
+        outline: none;
+    }
+    .butnNav {
+        font-size: 2vw;
+        background-color: rgb(209, 132, 93);
+        padding: 20px;
+        border-radius: 60%;
+        border: 5px solid #854b3d;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        outline: none;
+    }
+    .btns {
+        font-size: 1vw;
+        background-color: rgb(209, 132, 93);
+        padding: 10px;
+        border-radius: 10%;
+        border: 3px solid #854b3d;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        outline: none;
+    }
+    #dropdownMenuButton {
+        padding: 10px;
+        font-size: 2vw;
+        font-weight: 700;
+        background-color: white;
+        border: 5px solid rgb(209, 132, 93);
     }
 }

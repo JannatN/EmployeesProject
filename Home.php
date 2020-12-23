@@ -44,7 +44,7 @@ if (!isset($_SESSION["username"])) {
                 <div id="sec-2">
                     <div class="overview">
                         <p class="subtitles"> &nbsp; First Section &nbsp;&nbsp; </p>
-                        <p class="innerHref"><a href="employee.php">Employees</a></p>
+                        <p class="innerHref"><a href="employees.php">Employees</a></p>
                     </div>
                     <div class="sources">
                         <p class="subtitles">Second Section</p>

@@ -71,19 +71,10 @@ if (!isset($_SESSION["username"])) {
             <option value=100>100</option>
             <option value=250>250</option>
             <option value=500>500</option>
-            
-        </select>
-        <!-- <select name="selected" id="selected">
-                    <option value=0>Show</option>
-                    <option value=50>50</option>
-                    <option value=100>100</option>
-                    <option value=250>250</option>
-                    <option value=500>500</option>
 
-                </select> -->
+        </select>
         <nav class="navbar navbar-expand-lg navbar-dark blue lighten-2 mb-4">
 
-            <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <form class="form-inline mr-auto">
@@ -92,13 +83,9 @@ if (!isset($_SESSION["username"])) {
                 </form>
 
             </div>
-            <!-- Collapsible content -->
 
-            <!-- Navbar brand -->
 
         </nav>
-        <!-- <input type="text" id="search" name="search">
-        <button type="submit" name="submit" id="submit">Search</button> -->
     </form>
 
     <?php
@@ -107,11 +94,6 @@ if (!isset($_SESSION["username"])) {
         $str1 = $_POST["search"];
         $output = '';
         $space = '';
-
-        // $query = "SELECT emp_no, first_name, last_name
-        // FROM employees
-        // WHERE first_name LIKE '$str1' OR last_name LIKE '$str1' OR CONCAT(first_name, last_name) 
-        // limit $x";
 
         $f = $_POST['search'];
         $token = strtok($f, " ");
