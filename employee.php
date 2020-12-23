@@ -27,6 +27,9 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" href="emp.css">
 
     <style>
+        input[type='text']{
+            color:black;
+        }
         .content {
             background-color: #854b3d;
             width: 100%;
@@ -131,6 +134,8 @@ if (!isset($_SESSION["username"])) {
                     </form>
 
                 </div>
+                </span>
+
                 <div id="sec-2">
                     <div class="overview">
                         <p class="subtitles"> View Employees information </p>
@@ -154,135 +159,158 @@ if (!isset($_SESSION["username"])) {
                     </div>
                 </div>
 
+
+
             </div>
 
+            <script>
+                $(document).ready(function() {
+                    $("#btn1").on('click', function() {
+                        $('.content').toggleClass('active');
+                        if ($(".content").is(":visible")) {
 
-        </div>
+                            var ajax = new XMLHttpRequest();
+                            ajax.open("GET", "emp_db.php", true);
+                            ajax.send();
 
-        <script>
-            $(document).ready(function() {
-                $("#btn1").on('click', function() {
-                    $('.content').toggleClass('active');
-                    if ($(".content").is(":visible")) {
+                            ajax.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = JSON.parse(this.responseText);
+                                    console.log(data);
 
-                        var ajax = new XMLHttpRequest();
-                        ajax.open("GET", "emp_db.php", true);
-                        ajax.send();
+                                    var tableContentHtml = '<table class="table-responsive"><tr><th>Employee Number</th><th>First Name</th><th>Last Name</th><th>Salary</th><th>Title</th> <th>Department Name</th></tr>';
 
-                        ajax.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                var data = JSON.parse(this.responseText);
-                                console.log(data);
-
-                                var tableContentHtml = '<table class="table-responsive"><tr><th>Employee Number</th><th>First Name</th><th>Last Name</th><th>Salary</th><th>Title</th> <th>Department Name</th></tr>';
-
-                                for (var a = 0; a < data.length; a++) {
-                                    var emp_no = data[a].emp_no;
-                                    var first_name = data[a].first_name;
-                                    var last_name = data[a].last_name;
-                                    var salary = data[a].salary;
-                                    var title = data[a].title;
-                                    var dept_name = data[a].dept_name;
-                                    console.log(dept_name);
+                                    for (var a = 0; a < data.length; a++) {
+                                        var emp_no = data[a].emp_no;
+                                        var first_name = data[a].first_name;
+                                        var last_name = data[a].last_name;
+                                        var salary = data[a].salary;
+                                        var title = data[a].title;
+                                        var dept_name = data[a].dept_name;
+                                        console.log(dept_name);
 
 
-                                    tableContentHtml += '<tr><td>' + emp_no + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td>' + '<td>' + salary + '</td>' + '<td>' + title + '</td>' + '<td>' + dept_name + '</td></tr>';
+                                        tableContentHtml += '<tr><td>' + emp_no + '</td>' + '<td>' + first_name + '</td>' + '<td>' + last_name + '</td>' + '<td>' + salary + '</td>' + '<td>' + title + '</td>' + '<td>' + dept_name + '</td></tr>';
+                                    }
+                                    tableContentHtml += '</table>';
+                                    $(tableContentHtml).appendTo(".content");
                                 }
-                                tableContentHtml += '</table>';
-                                $(tableContentHtml).appendTo(".content");
+
                             }
+                        };
 
-                        }
-                    };
-
+                    });
                 });
-            });
-        </script>
-        <div id="add_data_Modal" class="modal fade">
-            <div class="insertCard" style="color:white">
-                <div class="modal-header">
-                    <button style="color:yellow; font-size:40px" type="button" class="close" data-dismiss="modal">&times;</button>
+            </script>
+            <div id="add_data_Modal" class="modal fade">
+                <div class="insertCard" style="color:white">
+                    <div class="modal-header">
+                        <button style="color:yellow; font-size:40px" type="button" class="close" data-dismiss="modal">&times;</button>
 
-                </div>
-
-                <div class="modal-body">
-                    <form method="post" id="insert_form">
-                        <label>Enter employee ID number</label>
-                        <br>
-                        <input style="color: black;" type="text" id="number" name="number">
-                        <br />
-                        <label>Enter employee birth date</label>
-                        <br>
-                        <input style="color: black;" type="text" id="birthDate" name="birthDate">
-                        <br />
-                        <label>Enter employee first name</label>
-                        <br>
-                        <input style="color: black;" type="text" id="fname" name="fname">
-                        <br />
-                        <label>Enter employee last name</label>
-                        <br>
-                        <input style="color: black;" type="text" id="lname" name="lname">
-                        <br />
-                        <label>Enter employee gender</label>
-                        <br>
-                        <input style="color: black;" type="text" id="gender" name="gender">
-                        <br />
-                        <label>Enter employee hire date</label>
-                        <br>
-                        <input style="color: black;" type="text" id="hireDate" name="hireDate">
-                        <br />
-                        <br>
-                        <input style="color: black" class="btns" type="submit" name="insert" id="insert" value="Insert" />
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btns" class="btn btn-default" data-dismiss="modal" style="color: black; ">Close</button>
                     </div>
+
+                    <div class="modal-body">
+                        <form method="post" id="insert_form">
+                            <label>Enter employee ID number</label>
+                            <br>
+                            <input style="color: black;" type="text" id="number" name="number">
+                            <br />
+                            <label>Enter employee birth date</label>
+                            <br>
+                            <input style="color: black;" type="text" id="birthDate" name="birthDate">
+                            <br />
+                            <label>Enter employee first name</label>
+                            <br>
+                            <input style="color: black;" type="text" id="fname" name="fname">
+                            <br />
+                            <label>Enter employee last name</label>
+                            <br>
+                            <input style="color: black;" type="text" id="lname" name="lname">
+                            <br />
+                            <label>Enter employee gender</label>
+                            <br>
+                            <input style="color: black;" type="text" id="gender" name="gender">
+                            <br />
+                            <label>Enter employee hire date</label>
+                            <br>
+                            <input style="color: black;" type="text" id="hireDate" name="hireDate">
+                            <br />
+                            <br>
+                            <label> Employee Department:</label> <br>
+
+                            <input type="text" name="dept"><br>
+                            <label> Employee Department Number: </label><br>
+                            <input type="text" name="num"><br>
+
+                            <label> Employee Department From Date: </label><br>
+                            <input type="text" name="from"><br>
+                            <label> Employee Department To Date: </label><br>
+                            <input type="text" name="to"><br>
+
+                            <label>Employee Salary: </label><br>
+                            <input type="text" name="salary"><br>
+                            <label> Employee Salary From Date: </label><br>
+                            <input type="text" name="salaryFrom"><br>
+                            <label> Employee Department To Date: </label><br>
+                            <input type="text" name="salaryTo"><br>
+
+                            <label> Employee Title: </label><br>
+                            <input type="text" name="title"><br>
+                            <label> Employee Title From Date: </label><br>
+                            <input type="text" name="titleFrom"><br>
+                            <label> Employee Title To Date: </label><br>
+                            <input type="text" name="titleTo"><br>
+                            <input style="color: black" class="btns" type="submit" name="insert" id="insert" value="Insert" />
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btns" class="btn btn-default" data-dismiss="modal" style="color: black; ">Close</button>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
 
-        <script>
-            $(document).ready(function() {
-                $('#insert_form').on('submit', function(event) {
-                    event.preventDefault();
-                    if ($('#number').val() == '') {
-                        alert("Employee id is required");
-                    } else if ($('#birthDate').val() == '') {
-                        alert("Birth date is required");
-                    } else if ($('#fname').val() == '') {
-                        alert("First name is required");
-                    } else if ($('#lname').val() == '') {
-                        alert("Last name is required");
-                    } else if ($('#gender').val() == '') {
-                        alert("Gender is required");
-                    } else if ($('#hireDate').val() == '') {
-                        alert("Hire date is required");
+            <script>
+                $(document).ready(function() {
+                    $('#insert_form').on('submit', function(event) {
+                        event.preventDefault();
+                        if ($('#number').val() == '') {
+                            alert("Employee id is required");
+                        } else if ($('#birthDate').val() == '') {
+                            alert("Birth date is required");
+                        } else if ($('#fname').val() == '') {
+                            alert("First name is required");
+                        } else if ($('#lname').val() == '') {
+                            alert("Last name is required");
+                        } else if ($('#gender').val() == '') {
+                            alert("Gender is required");
+                        } else if ($('#hireDate').val() == '') {
+                            alert("Hire date is required");
 
-                    } else {
-                        $.ajax({
-                            url: "emp_insert.php",
-                            method: "POST",
-                            data: $('#insert_form').serialize(),
-                            beforeSend: function() {
-                                $('#insert').val("Inserting");
-                            },
-                            success: function(data) {
-                                alert("done");
-                                $('#insert_form')[0].reset();
-                                // $('#add_data_Modal').modal('none');
-                                // $('.modal fade').modal('hide');
+                        } else {
+                            $.ajax({
+                                url: "emp_insert.php",
+                                method: "POST",
+                                data: $('#insert_form').serialize(),
+                                beforeSend: function() {
+                                    $('#insert').val("Inserting");
+                                },
+                                success: function(data) {
+                                    alert("done");
+                                    $('#insert_form')[0].reset();
+                                    // $('#add_data_Modal').modal('none');
+                                    // $('.modal fade').modal('hide');
 
 
-                            }
-                        });
-                    }
+                                }
+                            });
+                        }
 
+
+                    });
 
                 });
-
-            });
-        </script>
+            </script>
 
 </body>
 

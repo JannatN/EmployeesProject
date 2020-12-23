@@ -7,9 +7,10 @@ $conn =  mysqli_connect("localhost", "root", "", "employees") or die("FAILEEED")
 mysqli_select_db($conn, "employees") or die("could not connect to db");
 ?>
 <?php
+
 $result_array = array();
 // if (isset($_POST['selected'])) {
-//     $x = $_POST['selected'];
+    // $x = $_POST['selected'];
 
     $query = "SELECT DISTINCT  employees.emp_no, employees.first_name, employees.last_name,salaries.salary ,titles.title,departments.dept_name
     FROM employees , salaries ,titles,dept_emp ,departments

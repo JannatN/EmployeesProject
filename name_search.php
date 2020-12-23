@@ -1,7 +1,14 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "", "employees");
 ?>
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
 
+    header("location: looginHTML.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +71,7 @@ $connect = mysqli_connect("localhost", "root", "", "employees");
             <option value=100>100</option>
             <option value=250>250</option>
             <option value=500>500</option>
+            
         </select>
         <!-- <select name="selected" id="selected">
                     <option value=0>Show</option>

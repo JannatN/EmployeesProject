@@ -1,6 +1,14 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "", "employees");
 ?>
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+
+    header("location: looginHTML.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
