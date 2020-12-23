@@ -16,7 +16,10 @@ $connect = mysqli_connect("localhost", "root", "", "employees");
             font-weight: 600;
 
         }
-        tr:nth-child(even) {background-color: #f1eae8;}
+
+        tr:nth-child(even) {
+            background-color: #ffd9b3;
+        }
 
 
         .form-control {

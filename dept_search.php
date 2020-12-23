@@ -19,7 +19,7 @@ $connect = mysqli_connect("localhost", "root", "", "employees");
         }
 
         tr:nth-child(even) {
-            background-color: #f1eae8;
+            background-color: #ffd9b3;
         }
 
 
