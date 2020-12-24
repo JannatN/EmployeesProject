@@ -59,12 +59,18 @@ if (!isset($_SESSION["username"])) {
             color: white;
             font-weight: 600;
 
+        }
 
+        #btnBack {
+            margin-left: 94%;
         }
     </style>
 </head>
 
 <body>
+    <form action="employees.php" method="POST">
+        <button id="btnBack" class="btn" id="logout">Back</button>
+    </form>
     <form method="post">
         <select name="selected" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option value=0>Show</option>

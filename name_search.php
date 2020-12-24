@@ -17,6 +17,9 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Search By Name</title>
     <style>
+        body{
+            width: 100%;
+        }
         .th {
             background-color: #854b3d;
             color: white;
@@ -59,10 +62,16 @@ if (!isset($_SESSION["username"])) {
 
 
         }
+        #btnBack{
+            margin-left: 94%;
+        }
     </style>
 </head>
 
 <body>
+    <form action="employees.php" method="POST">
+        <button id="btnBack" class="btn" id="logout">Back</button>
+    </form>
     <form method="post">
 
         <select name="selected" class="custom-select mr-sm-2" id="inlineFormCustomSelect">

@@ -18,12 +18,15 @@
             margin: 0px;
             background-size: cover;
         }
+
+
     </style>
 </head>
 
 <body>
     <div id="external">
-        <div class="Left"> <img id="background" src="wh.jpeg" alt="cover">
+        <div class="Left">
+            <img id="background" src="wh.jpeg" alt="cover">
         </div>
         <div class="right">
             <div class="card">

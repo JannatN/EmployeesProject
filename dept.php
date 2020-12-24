@@ -25,7 +25,7 @@ if (!isset($_SESSION["username"])) {
 
     <style>
         .content1 {
-            background-color: pink;
+            /* background-color: grey; */
             width: 100%;
             height: 100%;
             display: none;
@@ -83,6 +83,14 @@ if (!isset($_SESSION["username"])) {
             justify-content: center;
             margin-left: 25%;
         }
+
+        #dropdownMenuButton {
+            padding: 10px;
+            font-size: 1.3vw;
+            font-weight: 700;
+            background-color: white;
+            border: 5px solid rgb(209, 132, 93);
+        }
     </style>
 
 </head>
@@ -105,7 +113,9 @@ if (!isset($_SESSION["username"])) {
         <div class="left">
             <h2>View Departments information </h2>
             <button class="butn" id="btn1" type="submit">Department Managers </button>
-            <div class="content1"></div>
+            <div class="content1">
+
+            </div>
             <button class="butn" id="btn2" type="submit">Department Salaries </button>
             <!-- <div class="content1"></div> -->
             <div class="content2"></div>

@@ -173,6 +173,7 @@ header {
 }
 
 #dropdownMenuButton {
+    margin-left: 10%;
     padding: 10px;
     font-size: 1.3vw;
     font-weight: 700;

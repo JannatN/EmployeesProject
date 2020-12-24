@@ -1,3 +1,18 @@
+<style>
+    .th {
+        background-color: #854b3d;
+        color: white;
+        font-weight: 600;
+        font-size: 1.1vw;
+
+    }
+ 
+
+
+    tr:nth-child(even) {
+        background-color: #f5f5f0;
+    }
+</style>
 
 <?php
 $connect =  mysqli_connect("localhost", "root", "", "employees") or die("FAILEEED");
@@ -58,4 +73,3 @@ if (isset($_POST["submit"]) && isset($_POST['selected'])) {
     }
 }
 ?>
-
